@@ -18,6 +18,8 @@ require 'fluent/plugin/output'
 
 module Fluent::Plugin
   class StdoutOutput < Output
+    include Fluent::PluginHelper::EventEmitter
+
     Fluent::Plugin.register_output('stdout', self)
 
     desc 'Output format.(json,hash)'
