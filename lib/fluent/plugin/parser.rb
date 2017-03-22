@@ -109,7 +109,9 @@ module Fluent
           nil
         end
       rescue Fluent::TimeParser::TimeParseError => e
-        raise ParserError, e.message
+        puts "Warning: ParserError parsing record with error #{e}. Record: #{record}"
+        # raise ParserError, e.message
+        Fluent::EventTime.now
       end
 
       # def parse(text, &block)
